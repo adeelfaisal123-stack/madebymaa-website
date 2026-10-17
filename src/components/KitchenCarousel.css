@@ -1,0 +1,469 @@
+.kitchen-carousel-wrap {
+  position: relative;
+  padding: 8px 52px 40px;
+  margin: 0 -8px;
+}
+
+.kitchen-carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 12px 4px 24px;
+}
+
+.kitchen-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.kitchen-carousel-item {
+  scroll-snap-align: start;
+  min-width: 0;
+  animation: kitchen-card-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes kitchen-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.kitchen-carousel-nav {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: white;
+  color: var(--hp-purple, #6221b3);
+  border: 1px solid rgba(98, 33, 179, 0.12);
+  box-shadow: 0 10px 28px rgba(98, 33, 179, 0.14);
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+}
+
+.kitchen-carousel-nav:hover {
+  background: var(--hp-purple, #6221b3);
+  color: white;
+  transform: translateY(-50%) scale(1.06);
+  box-shadow: 0 14px 32px rgba(98, 33, 179, 0.28);
+}
+
+.kitchen-carousel-nav-prev {
+  left: 0;
+}
+
+.kitchen-carousel-nav-next {
+  right: 0;
+}
+
+.kitchen-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.kitchen-carousel-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(98, 33, 179, 0.2);
+  cursor: pointer;
+  transition: transform 0.25s, background 0.25s, width 0.25s;
+}
+
+.kitchen-carousel-dot.active {
+  background: var(--hp-purple, #6221b3);
+  transform: scale(1.15);
+  width: 22px;
+  border-radius: 999px;
+}
+
+.kitchen-carousel-dot:hover {
+  background: var(--hp-purple, #6221b3);
+}
+
+/* ── Kitchen slide card ── */
+.kitchen-slide-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #ffffff 0%, #faf7ff 100%);
+  border: 1px solid rgba(98, 33, 179, 0.1);
+  box-shadow: 0 12px 36px rgba(98, 33, 179, 0.1);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: box-shadow 0.45s;
+}
+
+.kitchen-slide-card:hover {
+  box-shadow: 0 20px 48px rgba(98, 33, 179, 0.16);
+  color: inherit;
+}
+
+.kitchen-slide-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 19;
+  min-height: 400px;
+  max-height: 400px;
+  flex-shrink: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ede4ff, #f5f0ff);
+  z-index: 1;
+  contain: layout style paint;
+}
+
+.kitchen-slide-cover-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 140' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0,0 H1200 V118 C1050,132 900,108 750,118 C600,132 450,108 300,118 C150,132 0,108 0,118 Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 140' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0,0 H1200 V118 C1050,132 900,108 750,118 C600,132 450,108 300,118 C150,132 0,108 0,118 Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.kitchen-slide-cover-media img,
+.kitchen-slide-cover-fallback {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kitchen-slide-cover-media--logo img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.kitchen-slide-card:hover .kitchen-slide-cover-media img {
+  transform: scale(1.12);
+}
+
+.kitchen-slide-wave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.kitchen-slide-wave svg {
+  width: 100%;
+  height: 40px;
+  display: block;
+}
+
+.kitchen-slide-cover-fallback {
+  display: grid;
+  place-items: center;
+  font-size: 48px;
+  color: rgba(98, 33, 179, 0.35);
+  background: linear-gradient(135deg, #ede4ff, #f5f0ff);
+}
+
+.kitchen-slide-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(61, 21, 112, 0) 30%,
+    rgba(61, 21, 112, 0.55) 100%
+  );
+  opacity: 0.85;
+  transition: opacity 0.4s;
+  z-index: 1;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 140' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0,0 H1200 V118 C1050,132 900,108 750,118 C600,132 450,108 300,118 C150,132 0,108 0,118 Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 140' preserveAspectRatio='none'%3E%3Cpath fill='black' d='M0,0 H1200 V118 C1050,132 900,108 750,118 C600,132 450,108 300,118 C150,132 0,108 0,118 Z'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.kitchen-slide-card:hover .kitchen-slide-overlay {
+  opacity: 0.95;
+}
+
+.kitchen-slide-status {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: white;
+  backdrop-filter: blur(8px);
+}
+
+.kitchen-slide-status.open {
+  background: rgba(22, 163, 74, 0.92);
+  box-shadow: 0 4px 16px rgba(22, 163, 74, 0.35);
+}
+
+.kitchen-slide-status.closed {
+  background: rgba(220, 38, 38, 0.88);
+}
+
+.kitchen-slide-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+}
+
+.kitchen-slide-status.open .kitchen-slide-status-dot {
+  animation: kitchen-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes kitchen-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.35); }
+}
+
+.kitchen-slide-verified {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #3d1570;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 14px rgba(98, 33, 179, 0.12);
+}
+
+.kitchen-slide-verified i {
+  color: var(--hp-purple, #6221b3);
+}
+
+.kitchen-slide-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.8s;
+}
+
+.kitchen-slide-card:hover .kitchen-slide-shine {
+  transform: translateX(120%);
+}
+
+.kitchen-slide-body {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 52px;
+  min-height: 140px;
+  margin-top: -64px;
+  z-index: 3;
+  background: linear-gradient(180deg, rgba(250, 247, 255, 0) 0%, #faf7ff 24px, #faf7ff 100%);
+}
+
+.kitchen-slide-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 5;
+}
+
+.kitchen-slide-logo {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 6;
+  width: 64px;
+  height: 64px;
+  margin-top: -36px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 10px 28px rgba(98, 33, 179, 0.22);
+  background: white;
+}
+
+.kitchen-slide-logo-fallback {
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  color: var(--hp-purple, #6221b3);
+  background: linear-gradient(135deg, #f5f0ff, #ede4ff);
+}
+
+.kitchen-slide-info {
+  min-width: 0;
+  flex: 1;
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 4px;
+  position: relative;
+  z-index: 5;
+}
+
+.kitchen-slide-info h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.25;
+  color: var(--hp-purple-deep, #3d1570);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.kitchen-slide-chef {
+  margin: 4px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(61, 21, 112, 0.55);
+}
+
+.kitchen-slide-cuisine {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--hp-purple, #6221b3);
+  background: linear-gradient(135deg, rgba(98, 33, 179, 0.1), rgba(139, 92, 246, 0.12));
+  border: 1px solid rgba(98, 33, 179, 0.12);
+  margin-bottom: 12px;
+}
+
+.kitchen-slide-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-bottom: 0;
+}
+
+.kitchen-slide-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(61, 21, 112, 0.65);
+}
+
+.kitchen-slide-rating {
+  color: var(--hp-purple-deep, #3d1570) !important;
+}
+
+.kitchen-slide-rating i {
+  color: #e8c468;
+  font-size: 13px;
+}
+
+.kitchen-slide-rating small {
+  font-weight: 600;
+  opacity: 0.65;
+  margin-left: 2px;
+}
+
+.kitchen-slide-delivery i,
+.kitchen-slide-distance i {
+  color: var(--hp-purple, #6221b3);
+  font-size: 12px;
+}
+
+.kitchen-slide-cta {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  color: white;
+  background: linear-gradient(135deg, #7c3aed 0%, var(--hp-purple, #6221b3) 100%);
+  box-shadow: 0 6px 18px rgba(98, 33, 179, 0.28);
+  opacity: 1;
+  transform: none;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.kitchen-slide-card:hover .kitchen-slide-cta {
+  box-shadow: 0 10px 24px rgba(98, 33, 179, 0.36);
+}
+
+.kitchen-slide-cta i {
+  transition: transform 0.3s;
+}
+
+.kitchen-slide-card:hover .kitchen-slide-cta i {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .kitchen-carousel-wrap {
+    padding: 8px 4px 36px;
+  }
+
+  .kitchen-carousel-nav {
+    display: none;
+  }
+
+  .kitchen-slide-info h3 {
+    font-size: 16px;
+  }
+}

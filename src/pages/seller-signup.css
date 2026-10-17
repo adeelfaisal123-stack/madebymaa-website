@@ -1,0 +1,155 @@
+/* Seller signup — extends auth layout */
+
+.seller-signup-page .auth-shell {
+  align-items: flex-start;
+  padding-top: 20px;
+  padding-bottom: 32px;
+}
+
+.seller-signup-page .seller-signup-card {
+  max-width: 560px;
+}
+
+.seller-signup-kicker {
+  margin: 0 0 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--hp-terracotta, #d4622a);
+}
+
+.seller-signup-page .auth-header {
+  margin-bottom: 16px;
+}
+
+.seller-signup-page .auth-header h1 {
+  margin-bottom: 6px;
+}
+
+.seller-signup-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+}
+
+.seller-signup-steps li {
+  position: relative;
+  padding: 8px 6px;
+  border-radius: 999px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: rgba(42, 24, 64, 0.45);
+  background: rgba(98, 33, 179, 0.05);
+  border: 1px solid transparent;
+}
+
+.seller-signup-steps li.is-current {
+  color: #6221b3;
+  background: rgba(98, 33, 179, 0.12);
+  border-color: rgba(98, 33, 179, 0.18);
+}
+
+.seller-signup-steps li.is-done {
+  color: #15803d;
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.seller-signup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 12px;
+  margin-bottom: 8px;
+}
+
+.seller-signup-span {
+  grid-column: 1 / -1;
+}
+
+.seller-signup-note {
+  margin: 4px 0 16px;
+  font-size: 0.84rem;
+  color: rgba(42, 24, 64, 0.58);
+}
+
+.seller-signup-done {
+  text-align: center;
+  padding: 8px 0 4px;
+}
+
+.seller-signup-done-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  border-radius: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  color: #fff;
+  background: linear-gradient(145deg, #8b5cf6, #6221b3);
+  box-shadow: 0 14px 32px rgba(98, 33, 179, 0.28);
+}
+
+.seller-signup-done p {
+  margin: 0 0 14px;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #2a1840;
+  line-height: 1.45;
+}
+
+.seller-signup-done ul {
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  display: grid;
+  gap: 8px;
+}
+
+.seller-signup-done li {
+  position: relative;
+  padding: 10px 12px 10px 36px;
+  border-radius: 14px;
+  background: rgba(98, 33, 179, 0.05);
+  font-size: 0.9rem;
+  color: rgba(42, 24, 64, 0.72);
+  line-height: 1.4;
+}
+
+.seller-signup-done li::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 15px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d4622a;
+}
+
+.seller-signup-done-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.seller-signup-done-actions .hp-btn {
+  min-width: 150px;
+  justify-content: center;
+}
+
+.seller-signup-page .auth-submit {
+  margin-top: 12px;
+}
+
+@media (max-width: 560px) {
+  .seller-signup-grid {
+    grid-template-columns: 1fr;
+  }
+}

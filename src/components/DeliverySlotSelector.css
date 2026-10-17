@@ -1,0 +1,220 @@
+.ds-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ds-loading,
+.ds-empty {
+  margin: 0;
+  padding: 14px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(31, 18, 51, 0.55);
+}
+
+.ds-notice {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(98, 33, 179, 0.08);
+  border: 1px solid rgba(98, 33, 179, 0.14);
+  color: #3d1570;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.ds-now,
+.ds-schedule-head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  border: 1px solid rgba(98, 33, 179, 0.12);
+  background: #fff;
+  border-radius: 18px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.ds-now:hover,
+.ds-schedule-head:hover {
+  border-color: rgba(98, 33, 179, 0.28);
+}
+
+.ds-now.is-selected,
+.ds-schedule.is-open .ds-schedule-head {
+  border-color: rgba(98, 33, 179, 0.35);
+  background: linear-gradient(135deg, rgba(98, 33, 179, 0.05), rgba(232, 196, 104, 0.08));
+  box-shadow: 0 8px 22px rgba(98, 33, 179, 0.08);
+}
+
+.ds-now-icon,
+.ds-schedule-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 18px;
+}
+
+.ds-now-icon {
+  background: linear-gradient(135deg, #f59e0b, #d4622a);
+}
+
+.ds-schedule-icon {
+  background: linear-gradient(135deg, #8b5cf6, #6221b3);
+}
+
+.ds-now strong,
+.ds-schedule-head strong {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 900;
+  color: #1f1233;
+}
+
+.ds-now small,
+.ds-schedule-head small {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(31, 18, 51, 0.55);
+}
+
+.ds-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid rgba(98, 33, 179, 0.2);
+  display: grid;
+  place-items: center;
+  color: transparent;
+  font-size: 12px;
+}
+
+.ds-now.is-selected .ds-check {
+  background: #6221b3;
+  border-color: #6221b3;
+  color: #fff;
+}
+
+.ds-chevron {
+  color: rgba(61, 21, 112, 0.45);
+  transition: transform 0.25s;
+}
+
+.ds-chevron.open {
+  transform: rotate(180deg);
+}
+
+.ds-schedule {
+  border-radius: 18px;
+  border: 1px solid rgba(98, 33, 179, 0.12);
+  background: #fff;
+  overflow: hidden;
+}
+
+.ds-schedule-head {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.ds-schedule-body {
+  padding: 0 16px 16px;
+  border-top: 1px solid rgba(98, 33, 179, 0.08);
+}
+
+.ds-section-label {
+  margin: 14px 0 10px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(31, 18, 51, 0.5);
+}
+
+.ds-days {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.ds-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid rgba(98, 33, 179, 0.12);
+  background: #faf8ff;
+  border-radius: 14px;
+  padding: 12px 8px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.ds-day strong {
+  font-size: 13px;
+  font-weight: 900;
+  color: #1f1233;
+}
+
+.ds-day small {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(31, 18, 51, 0.5);
+}
+
+.ds-day.is-selected {
+  background: linear-gradient(135deg, #7c3aed, #6221b3);
+  border-color: transparent;
+}
+
+.ds-day.is-selected strong,
+.ds-day.is-selected small {
+  color: #fff;
+}
+
+.ds-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ds-slot {
+  border: 1px solid rgba(98, 33, 179, 0.14);
+  background: #fff;
+  color: #1f1233;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.ds-slot:hover {
+  border-color: rgba(98, 33, 179, 0.3);
+  transform: translateY(-1px);
+}
+
+.ds-slot.is-selected {
+  background: #6221b3;
+  border-color: #6221b3;
+  color: #fff;
+}
+
+@media (max-width: 560px) {
+  .ds-days {
+    grid-template-columns: 1fr;
+  }
+}

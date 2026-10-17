@@ -1,0 +1,324 @@
+.kb-filters {
+  position: relative;
+  z-index: 5;
+  margin-top: -4px;
+  padding-bottom: 8px;
+}
+
+.kb-filters-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.kb-open-toggle {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 3px;
+  border-radius: 14px;
+  background: white;
+  border: 1px solid rgba(22, 163, 74, 0.14);
+  box-shadow: 0 8px 24px rgba(98, 33, 179, 0.08);
+  max-width: 420px;
+}
+
+.kb-open-toggle-pill {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  width: calc(50% - 3px);
+  border-radius: 11px;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), background 0.28s;
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.28);
+}
+
+.kb-open-toggle-pill.is-open {
+  left: 3px;
+  background: linear-gradient(135deg, #22c55e, #15803d);
+}
+
+.kb-open-toggle-pill.is-closed {
+  left: calc(50%);
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.28);
+}
+
+.kb-open-toggle-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 800;
+  color: rgba(61, 21, 112, 0.55);
+  transition: color 0.25s;
+}
+
+.kb-open-toggle-btn.active {
+  color: white;
+}
+
+.kb-open-toggle-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  transition: background 0.25s, color 0.25s;
+}
+
+.kb-open-toggle-icon.open {
+  background: rgba(22, 163, 74, 0.12);
+  color: #16a34a;
+}
+
+.kb-open-toggle-icon.closed {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.kb-open-toggle-btn.active .kb-open-toggle-icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.kb-filters-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.kb-filter-dropdown {
+  position: relative;
+}
+
+.kb-filter-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(98, 33, 179, 0.12);
+  background: white;
+  color: var(--brand-purple-deep);
+  border-radius: 14px;
+  padding: 11px 14px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(98, 33, 179, 0.06);
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  min-width: 148px;
+  max-width: 220px;
+}
+
+.kb-filter-trigger.active {
+  border-color: rgba(98, 33, 179, 0.28);
+  color: var(--brand-purple);
+  box-shadow: 0 6px 18px rgba(98, 33, 179, 0.1);
+}
+
+.kb-filter-trigger span {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.kb-filter-chevron {
+  font-size: 12px;
+  color: rgba(61, 21, 112, 0.45);
+  transition: transform 0.25s;
+}
+
+.kb-filter-chevron.open {
+  transform: rotate(180deg);
+}
+
+.kb-filter-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: auto;
+  z-index: 20;
+  width: min(240px, calc(100vw - 32px));
+  background: white;
+  border-radius: 18px;
+  border: 1px solid rgba(98, 33, 179, 0.1);
+  box-shadow: 0 18px 48px rgba(98, 33, 179, 0.16);
+  padding: 12px;
+  animation: kb-panel-in 0.2s ease-out;
+}
+
+.kb-filter-panel--cuisine {
+  width: min(280px, calc(100vw - 32px));
+}
+
+@keyframes kb-panel-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.kb-filter-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px 10px;
+}
+
+.kb-filter-panel-head strong {
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.kb-filter-panel-clear {
+  border: none;
+  background: transparent;
+  color: var(--brand-purple);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 6px;
+}
+
+.kb-filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 0 2px;
+}
+
+.kb-filter-cuisine-opt,
+.kb-filter-rating-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 1px solid rgba(98, 33, 179, 0.08);
+  background: white;
+  border-radius: 12px;
+  padding: 11px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brand-purple-deep);
+  text-align: left;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.kb-filter-cuisine-opt.active,
+.kb-filter-rating-opt.active {
+  background: rgba(98, 33, 179, 0.08);
+  border-color: rgba(98, 33, 179, 0.22);
+  color: var(--brand-purple);
+}
+
+.kb-filter-cuisine-check {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--brand-purple);
+  font-size: 13px;
+}
+
+.kb-filter-cuisine-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.kb-filter-cuisine-fallback {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(98, 33, 179, 0.08);
+  color: var(--brand-purple);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.kb-filter-rating-opt i {
+  color: #e8c468;
+  font-size: 13px;
+}
+
+.kb-filter-clear-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: rgba(98, 33, 179, 0.08);
+  color: var(--brand-purple);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.kb-filter-count {
+  margin: 12px 0 0;
+  text-align: right;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.kb-filter-count strong {
+  color: var(--brand-purple);
+}
+
+@media (max-width: 991px) {
+  .kb-filters-actions {
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .kb-filter-dropdown {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .kb-filter-trigger {
+    width: 100%;
+    max-width: none;
+  }
+
+  .kb-filter-count {
+    text-align: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .kb-filters-toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .kb-open-toggle {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
+  .kb-filters-actions {
+    flex: 0 0 auto;
+  }
+}
+

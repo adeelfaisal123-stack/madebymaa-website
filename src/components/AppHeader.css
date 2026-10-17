@@ -1,0 +1,78 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(98, 33, 179, 0.08);
+}
+
+.app-header-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+}
+
+.app-header-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.app-header-logo img {
+  transition: transform 0.3s;
+}
+
+.app-header-auth {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.app-header-link {
+  font-size: 13px;
+  font-weight: 800;
+  color: #3d1570;
+  text-decoration: none;
+  padding: 8px 10px;
+}
+
+.app-header-link:hover {
+  color: #6221b3;
+  text-decoration: none;
+}
+
+.app-header-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(98, 33, 179, 0.16);
+  background: #fff;
+  color: #3d1570;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.app-header-btn:hover {
+  color: #6221b3;
+  text-decoration: none;
+  border-color: rgba(98, 33, 179, 0.35);
+}
+
+.app-header-btn--primary {
+  border: 0;
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #6221b3 50%, #3d1570);
+}
+
+.app-header-btn--primary:hover {
+  color: #fff;
+}
